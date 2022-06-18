@@ -4,14 +4,17 @@ tput setaf 5;echo "# Trace Labs OSINT VM Updater #"
 tput setaf 5;echo "###############################"
 
 echo "[+] Update + Upgrade System.."
-sudo apt update
-sudo apt upgrade -y
+sudo apt update -qq 
+sudo apt upgrade -qq -y
 sudo npm install npm@latest -g
 sudo npm update -g
 
 echo "[+] Upgrading Kali version to latest..."
-sudo apt dist-upgrade -y
-sudo apt full-upgrade -y
+sudo apt dist-upgrade -qq -y
+sudo apt full-upgrade -qq -y
+
+echo "[+] Installing additional software..."
+sudo apt install -y keepassx
 
 echo "[+] 2021.2 OVA fixup..."
 
@@ -48,6 +51,33 @@ tput setaf 2;echo "[+] Done."
 
 #################
 
+tput setaf 5;echo "[+] Checking AppImageLauncher..."
+{
+	if  [ ! -f "/usr/bin/AppImageLauncher" ]; then
+		echo "will be installed"
+		wget https://github.com/TheAssassin/AppImageLauncher/releases/download/continuous/appimagelauncher_2.2.0-gha100.5a0fdec+bionic_amd64.deb
+		sudo dpkg -i appimagelauncher_2.2.0-gha100.5a0fdec+bionic_amd64.deb
+	else
+		echo "ok, already installed"
+	fi
+}
+tput setaf 2;echo "[+] Done."
+
+#################
+
+tput setaf 5;echo "[+] Checking Obsidian..."
+{
+	if  [ ! -f "/usr/bin/AppImageLauncher" ]; then
+		echo "will be installed"
+		wget https://github.com/obsidianmd/obsidian-releases/releases/download/v0.14.6/Obsidian-0.14.6.AppImage
+		ail-cli integrate Obsidian-0.14.6.AppImage
+	else
+		echo "ok, already installed"
+	fi
+}
+tput setaf 2;echo "[+] Done."
+
+##################
 
 tput setaf 5;echo "[+] Updating LittleBrother..."
 {
@@ -229,6 +259,7 @@ tput setaf 5;echo "[+] Updating OnionSearch..."
 }
 tput setaf 2;echo "[+] Done."
 
+############################
 
 tput setaf 5;echo "[+] Updating Twayback..."
 {
@@ -243,6 +274,34 @@ tput setaf 5;echo "[+] Updating Twayback..."
   fi
 }
 tput setaf 2;echo "[+] Done."
+
+############################
+
+tput setaf 5;echo "[+] Updating Maigret..."
+{
+  if [ -d "/usr/share/maigret" ]; then        
+    cd /usr/share/maigret
+    sudo git pull https://github.com/soxoj/maigret.git --rebase
+  else
+    sudo git clone https://github.com/soxoj/maigret.git /usr/share/maigret
+    cd /usr/share/maigret
+    sudo pip install .
+    sudo touch /usr/share/applications/tl-maigret.desktop
+    sudo chmod 777 /usr/share/applications/tl-maigret.desktop
+    sudo echo '[Desktop Entry]
+Name=Maigret    
+Comment=Maigret
+Type=Application
+Categories=05-social-media;
+Terminal=true
+Icon=utilities-terminal
+Exec=/usr/share/kali-menu/exec-in-shell "sudo maigret -h"
+' > /usr/share/applications/tl-maigret.desktop
+    sudo chmod 644 /usr/share/applications/tl-maigret.desktop
+  fi
+}
+tput setaf 2;echo "[+] Done."
+
 
 ############################
 
