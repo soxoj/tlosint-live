@@ -282,10 +282,11 @@ tput setaf 2;echo "[+] Done."
 
 tput setaf 5;echo "[+] Updating Maigret..."
 {
-  if [ -d "/usr/share/maigret" ]; then        
+  if maigret; then        
     cd /usr/share/maigret
     sudo git pull https://github.com/soxoj/maigret.git --rebase
   else
+    sudo rm -rf /usr/share/maigret
     sudo git clone https://github.com/soxoj/maigret.git /usr/share/maigret
     cd /usr/share/maigret
     sudo pip install .
