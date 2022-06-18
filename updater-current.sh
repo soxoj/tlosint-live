@@ -14,7 +14,7 @@ sudo apt dist-upgrade -y
 sudo apt full-upgrade -y
 
 echo "[+] Autoremoving unused packages..."
-sudo apt autoremove
+sudo apt autoremove -y
 
 echo "[+] Installing additional software..."
 sudo apt install -y keepassx
