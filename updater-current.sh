@@ -4,14 +4,14 @@ tput setaf 5;echo "# Trace Labs OSINT VM Updater #"
 tput setaf 5;echo "###############################"
 
 echo "[+] Update + Upgrade System.."
-sudo apt update -qq 
-sudo apt upgrade -qq -y
+sudo apt update
+sudo apt upgrade -y
 sudo npm install npm@latest -g
 sudo npm update -g
 
 echo "[+] Upgrading Kali version to latest..."
-sudo apt dist-upgrade -qq -y
-sudo apt full-upgrade -qq -y
+sudo apt dist-upgrade -y
+sudo apt full-upgrade -y
 
 echo "[+] 2021.2 OVA fixup..."
 
