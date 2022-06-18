@@ -13,6 +13,9 @@ echo "[+] Upgrading Kali version to latest..."
 sudo apt dist-upgrade -y
 sudo apt full-upgrade -y
 
+echo "[+] Autoremoving unused packages..."
+sudo apt autoremove
+
 echo "[+] Installing additional software..."
 sudo apt install -y keepassx
 
