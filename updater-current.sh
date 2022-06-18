@@ -70,7 +70,7 @@ tput setaf 2;echo "[+] Done."
 
 tput setaf 5;echo "[+] Checking Obsidian..."
 {
-	if  [ ! -d /home/osint/Applications] || ! find /home/osint/Applications -iname 'Obsidian.*'; then
+	if  [ ! -d /home/osint/Applications ] || ! find /home/osint/Applications -iname 'Obsidian.*'; then
 		echo "will be installed"
 		wget https://github.com/obsidianmd/obsidian-releases/releases/download/v0.14.6/Obsidian-0.14.6.AppImage
 		ail-cli integrate Obsidian-0.14.6.AppImage
