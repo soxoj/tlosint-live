@@ -4,14 +4,14 @@ tput setaf 5;echo "# Trace Labs OSINT VM Updater #"
 tput setaf 5;echo "###############################"
 
 echo "[+] Update + Upgrade System.."
-sudo apt update -qq 
-sudo apt upgrade -qq -y
+sudo apt update 
+sudo apt upgrade -y
 sudo npm install npm@latest -g
 sudo npm update -g
 
 echo "[+] Upgrading Kali version to latest..."
-sudo apt dist-upgrade -qq -y
-sudo apt full-upgrade -qq -y
+sudo apt dist-upgrade -y
+sudo apt full-upgrade -y
 
 echo "[+] Installing additional software..."
 sudo apt install -y keepassx
@@ -67,7 +67,7 @@ tput setaf 2;echo "[+] Done."
 
 tput setaf 5;echo "[+] Checking Obsidian..."
 {
-	if  [ ! -f "/usr/bin/AppImageLauncher" ]; then
+	if  [ ! -d /home/osint/Applications] || ! find /home/osint/Applications -iname 'Obsidian.*'; then
 		echo "will be installed"
 		wget https://github.com/obsidianmd/obsidian-releases/releases/download/v0.14.6/Obsidian-0.14.6.AppImage
 		ail-cli integrate Obsidian-0.14.6.AppImage
