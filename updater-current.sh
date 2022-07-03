@@ -306,6 +306,45 @@ Exec=/usr/share/kali-menu/exec-in-shell "sudo maigret -h"
 }
 tput setaf 2;echo "[+] Done."
 
+############################
+
+tput setaf 5;echo "[+] Updating h8mail..."
+{
+  if h8mail; then        
+        pip3 install --upgrade h8mail
+  fi
+}
+tput setaf 2;echo "[+] Done."
+
+############################
+
+tput setaf 5;echo "[+] Updating Orbit..."
+{
+  if orbit; then        
+    cd /usr/share/orbit
+    sudo git pull https://github.com/s0md3v/Orbit --rebase
+  else
+    sudo rm -rf /usr/share/orbit
+    sudo git clone https://github.com/s0md3v/Orbit /usr/share/orbit
+    cd /usr/share/orbit
+    sudo chmod +x orbit.py
+    sudo ln -s /usr/share/orbit/orbit.py /usr/local/bin
+    sudo touch /usr/share/applications/tl-orbit.desktop
+    sudo chmod 777 /usr/share/applications/tl-orbit.desktop
+    sudo echo '[Desktop Entry]
+Name=Orbit    
+Comment=Orbit
+Type=Application
+Categories=16-cryptocurrency;
+Terminal=true
+Icon=utilities-terminal
+Exec=/usr/share/kali-menu/exec-in-shell "sudo orbit.py -h"
+' > /usr/share/applications/tl-orbit.desktop
+    sudo chmod 644 /usr/share/applications/tl-orbit.desktop
+  fi
+}
+tput setaf 2;echo "[+] Done."
+
 
 ############################
 
