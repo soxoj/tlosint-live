@@ -135,6 +135,16 @@
     </Include>
   </Menu>
 
+  <Menu>
+    <Name>Domains</Name>
+    <Directory>16-cryptocurrency.directory</Directory>
+    <Include>
+      <And>
+        <Category>16-cryptocurrency</Category>
+      </And>
+    </Include>
+  </Menu>
+
   </Menu>
 </Menu>
 
