@@ -27,6 +27,9 @@ sudo find /usr/share/ -name ORIG_HEAD -size -1b -delete
 # Fix: sherlock no such file
 sudo sed -i 's/\/usr\/share\/sherlock\/sherlock\.py/\/usr\/share\/sherlock\/sherlock\/sherlock.py/' /usr/bin/sherlock
 
+# Fix menu
+sudo wget https://raw.githubusercontent.com/soxoj/tlosint-live/master/kali-config/common/includes.chroot/etc/xdg/menus/applications-merged/tl-applications.menu -O /etc/xdg/menus/applications-merged/tl-applications.menu
+
 # Fix: stego-toolkit and exifscan
 clean_dir() {
   if [ -d "${1}" ]; then
