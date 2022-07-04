@@ -4,17 +4,17 @@ tput setaf 5;echo "# Trace Labs OSINT VM Updater #"
 tput setaf 5;echo "###############################"
 
 echo "[+] Update + Upgrade System.."
-sudo apt update 
-sudo apt upgrade -y
-sudo npm install npm@latest -g
-sudo npm update -g
+# sudo apt update 
+# sudo apt upgrade -y
+# sudo npm install npm@latest -g
+# sudo npm update -g
 
 echo "[+] Upgrading Kali version to latest..."
-sudo apt dist-upgrade -y
-sudo apt full-upgrade -y
+# sudo apt dist-upgrade -y
+# sudo apt full-upgrade -y
 
 echo "[+] Autoremoving unused packages..."
-sudo apt autoremove -y
+# sudo apt autoremove -y
 
 echo "[+] Installing additional software..."
 sudo apt install -y keepassx
@@ -198,7 +198,7 @@ tput setaf 5;echo "[+] Updating sn0int..."
 	
 		cd /usr/share/sn0int
         	sudo git pull https://github.com/kpcyrd/sn0int.git --rebase
-        	sudo cargo install -f --path .
+        	# sudo cargo install -f --path .
 	else
 		sudo git clone https://github.com/kpcyrd/sn0int /usr/share/sn0int
 	fi
@@ -282,7 +282,7 @@ tput setaf 2;echo "[+] Done."
 
 tput setaf 5;echo "[+] Updating Maigret..."
 {
-  if maigret; then        
+  if which maigret; then        
     cd /usr/share/maigret
     sudo git pull https://github.com/soxoj/maigret.git --rebase
   else
@@ -310,7 +310,7 @@ tput setaf 2;echo "[+] Done."
 
 tput setaf 5;echo "[+] Updating h8mail..."
 {
-  if h8mail; then        
+  if which h8mail; then        
         pip3 install --upgrade h8mail
   fi
 }
