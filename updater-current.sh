@@ -357,6 +357,7 @@ tput setaf 5;echo "[+] Updating Obsidian templates..."
         echo "already downloaded, do `rm -rf ~/obsidian-templates` to update"
   else
 	sudo git clone https://github.com/soxoj/obsidian-osint-template-ru /home/osint/obsidian-templates
+	sudo chown osint:osint /home/osint/obsidian-templates -R
   fi
 }
 tput setaf 2;echo "[+] Done."
