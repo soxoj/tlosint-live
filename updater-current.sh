@@ -351,5 +351,16 @@ tput setaf 2;echo "[+] Done."
 
 ############################
 
+tput setaf 5;echo "[+] Updating Obsidian templates..."
+{
+  if [ -d "/home/osint/obsidian-templates" ]; then        
+  else
+	sudo git clone https://github.com/soxoj/obsidian-osint-template-ru /home/osint/obsidian-templates
+  fi
+}
+tput setaf 2;echo "[+] Done."
+
+############################
+
 
 
